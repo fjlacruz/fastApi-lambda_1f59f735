@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba CORS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #status {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .ok {
+      color: green;
+    }
+    .nok {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>CORS Test</h1>
+  <div id="status">Esperando resultado...</div>
+
+  <script>
+    const statusDiv = document.getElementById('status');
+
+    fetch('http://localhost:3000/items/1', { 
+      method: 'GET'
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      // Si la respuesta es exitosa, asumimos que no hubo problemas de CORS
+      statusDiv.textContent = "CORS OK";
+      statusDiv.classList.add('ok');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      // Si hay un error, se asume que hay un problema con CORS
+      statusDiv.textContent = "CORS NOK";
+      statusDiv.classList.add('nok');
+    });
+  </script>
+</body>
+</html>
