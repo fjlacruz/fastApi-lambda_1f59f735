@@ -19,8 +19,9 @@ pip install virtualenv
 python -m venv env (env environment name)
 .\env\Scripts\activate    (activate env in a power Shell)
 pip list (list all dependencies)
-pip freeze > requirements.txt   (save all dependencies )
 pip install -r requirements.txt  (install all dependencies)
+pip freeze > requirements.txt   (save all dependencies )
+
 
 ```
 
